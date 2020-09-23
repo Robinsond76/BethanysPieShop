@@ -1,0 +1,30 @@
+﻿@model  BethanysPieShop.ViewModels.PiesListViewModel
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bethany's Pie Shop</title>
+</head>
+<body>
+    <h1>@Model.CurrentCategory</h1>
+    
+    @foreach (var pie in Model.Pies)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="@pie.ImageThumbnailUrl" alt="">
+                <div class="caption">
+                    <h3 class="pull-right">@pie.Price.ToString("c")</h3>
+                    <h3>
+                        <a>@pie.Name</a>
+                    </h3>
+                    <p>@pie.Category.CategoryName</p>
+                    <p>@pie.ShortDescription</p>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
