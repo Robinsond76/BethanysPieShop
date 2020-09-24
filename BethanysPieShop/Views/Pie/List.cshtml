@@ -1,7 +1,6 @@
 ﻿@model  PiesListViewModel
 
     <h1>@Model.CurrentCategory</h1>
-    
     @foreach (var pie in Model.Pies)
     {
         <div class="col-sm-4 col-lg-4 col-md-4">
@@ -12,7 +11,6 @@
                     <h3>
                         <a>@pie.Name</a>
                     </h3>
-                    <p>@pie.Category.CategoryName</p>
                     <p>@pie.ShortDescription</p>
                 </div>
             </div>
