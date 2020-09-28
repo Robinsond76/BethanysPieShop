@@ -34,6 +34,16 @@ namespace BethanysPieShop
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            //Creates a scoped shopping cart for each user that sends a request. The getCart method will be invoked
+            //with each request. This checks if the cartId is already in the session and if not, create one
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
+            //Support for the HTTP Context accessor needed for the shopping cart
+            services.AddHttpContextAccessor();
+
+            //Support for sessions
+            services.AddSession();
+
             //register framework services
             services.AddControllersWithViews(); //Support for MVC
         }
@@ -48,6 +58,7 @@ namespace BethanysPieShop
 
             app.UseHttpsRedirection(); //redirects regular http reqs to use https
             app.UseStaticFiles(); //Will serve static files. Not default
+            app.UseSession(); // Must be before UseRouting()
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
