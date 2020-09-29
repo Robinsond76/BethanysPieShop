@@ -34,6 +34,8 @@ namespace BethanysPieShop
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
             //Creates a scoped shopping cart for each user that sends a request. The getCart method will be invoked
             //with each request. This checks if the cartId is already in the session and if not, create one
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
