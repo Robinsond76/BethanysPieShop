@@ -61,7 +61,9 @@ namespace BethanysPieShop
             app.UseHttpsRedirection(); //redirects regular http reqs to use https
             app.UseStaticFiles(); //Will serve static files. Not default
             app.UseSession(); // Must be before UseRouting()
+
             app.UseRouting();
+            app.UseAuthentication(); //Allows ASP.NET Core to use authentication using Identity
 
             app.UseEndpoints(endpoints =>
             {
